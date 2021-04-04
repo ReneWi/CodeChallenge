@@ -5,6 +5,7 @@ import Abstract.Room;
 
 public class CommandParser {
 	
+	// list of valid commands
 	private final String[] cmds = {"ENDE", "HILFE", "NIMM", "RAUS", "BENUTZE", "INVENTAR", "SCHAU" }; 
 
 	private Scanner sc; 
@@ -13,6 +14,8 @@ public class CommandParser {
 		this.sc = sc; 
 	}
 	
+	
+	//Parse room commands 
 	public void parseCmds(Room room, Player player) {
 		String cmd = ""; 
 		boolean exit = false; 
@@ -29,24 +32,12 @@ public class CommandParser {
 				}
 			}
 			
-			if(cmd.equals("ENDE")) {
-				System.out.println("Soll das Spiel beendet werden? [j|n]");
-				String confirm = this.sc.nextLine(); 
-				if(confirm.toUpperCase().contains("J")) {
-					System.out.println("Vielen Dank fürs Spielen!");
-					System.exit(0);
-				}
+			if(!matched) {
+				System.out.println("Befehl nicht verstanden. Versuche den Befehl 'Hilfe', wenn du nicht weiter kommst.");
+				continue; 
 			}
 			
-			if(cmd.equals("HILFE")) {
-				System.out.println("Ende                - Beendet das Spiel");
-				System.out.println("Hilfe               - Ruft Hilfe auf. Aber das weißt du ja offenbar.");
-				System.out.println("Raus                - Verlässt Raum.");
-				System.out.println("Schau               - Damit schaust du dich im Raum um.");
-				System.out.println("Nimm GEGENSTAND     - Damit nimmst du ein Item.");
-				System.out.println("Benutze GEGENSTAND  - Damit benutzt du ein Item.");
-				System.out.println("Inventar            - Zeigt dir deine gesammelten Items an");
-			}
+			parseGlobal(cmd);
 			
 			if(cmd.contains("NIMM")) {
 				cmd = cmd.replaceAll("\s+"," "); 
@@ -65,7 +56,7 @@ public class CommandParser {
 					String item = cmd.split("\s+")[1]; 
 					room.use(item, player); 
 				}catch(Exception e) {
-					System.out.println("(Ich verstehe den Befehl nicht!)");
+					System.out.println("(Beispiel für BENUTZE-Befehl: 'Benutze Skelettarm')");
 				}
 				
 			}
@@ -88,12 +79,11 @@ public class CommandParser {
 				
 			}
 			
-			if(!matched) {
-				System.out.println("Befehl nicht verstanden. Versuche den Befehl 'Hilfe', wenn du nicht weiter kommst.");
-			}
+			
 		}
 	}
 	
+	//parse decisions
 	public int parseOpt(String cmd, String[] options ) {
 		cmd = format(cmd); 
 		parseGlobal(cmd); 
@@ -108,6 +98,7 @@ public class CommandParser {
 		return -1; 
 	}
 	
+	//parse global commands 
 	public void parseGlobal(String cmd) {
 		cmd = format(cmd); 
 		if(cmd.equals("ENDE")) {
@@ -120,17 +111,18 @@ public class CommandParser {
 		}
 		
 		if(cmd.equals("HILFE")) {
-			System.out.println("Ende           - Beendet das Spiel");
-			System.out.println("Hilfe          - Ruft Hilfe auf. Aber das weißt du ja offenbar.");
-			System.out.println("Raus           - Verlässt Raum.");
-			System.out.println("Schau          - Damit schaust du dich im Raum um.");
-			System.out.println("Nimm <ITEM>    - Damit nimmst du ein Item.");
-			System.out.println("Benutze <ITEM> - Damit benutzt du ein Item.");
-			System.out.println("Inventar       - Zeigt dir deine gesammelten Items an");
+			System.out.println("Ende               - Beendet das Spiel");
+			System.out.println("Hilfe              - Ruft Hilfe auf. Aber das weißt du ja offenbar.");
+			System.out.println("Raus               - Verlässt Raum.");
+			System.out.println("Schau              - Damit schaust du dich im Raum um.");
+			System.out.println("Nimm GEGENSTAND    - Damit nimmst du einen Gegenstand auf.");
+			System.out.println("Benutze GEGENSTAND - Damit benutzt du einen Gegenstand.");
+			System.out.println("Inventar           - Zeigt dir deine gesammelten Gegenstände an");
 		}
 		
 	}
 	
+	// format command for parsing
 	private String format(String cmd) {
 		cmd = cmd.replaceAll("\\s", ""); 
 		cmd = cmd.toUpperCase(); 

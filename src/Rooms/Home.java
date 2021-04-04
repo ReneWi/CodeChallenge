@@ -20,7 +20,14 @@ public class Home extends Room {
 	@Override
 	public void describe() {
 		System.out.println("Du stehst in deiner Einzimmerwohnung. Es herrscht leichtes Chaos: ");
-		System.out.println("Überall liegt KLEIDUNG rum, in der Kochnische stapelt sich das Geschirr und die Fenster könnten auch mal wieder geputzt werden.");
+		
+		
+		if(this.exists("KLEIDUNG") != -1) {
+			System.out.println("Überall liegt KLEIDUNG rum, in der Kochnische stapelt sich das Geschirr und die Fenster könnten auch mal wieder geputzt werden.");
+		}else {
+			System.out.println("Überall liegt dreckige Kleidung rum, in der Kochnische stapelt sich das Geschirr und die Fenster könnten auch mal wieder geputzt werden.");
+		}
+		
 		if(this.exists("KAMM") != -1) {
 			System.out.println("Ein roter KAMM liegt auf deinem Nachttisch.");
 		}

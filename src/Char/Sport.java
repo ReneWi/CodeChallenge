@@ -4,6 +4,7 @@ import Abstract.Player;
 
 public class Sport extends Player {
 	
+	// Stats for sport class. Can be used for different decisions
 	public Sport() {
 		this.setHealth(120); 
 		this.setCharisma(9);

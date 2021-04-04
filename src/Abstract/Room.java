@@ -5,16 +5,21 @@ import java.util.ArrayList;
 import Interface.Item;
 import Items.Inventory;
 
+// abstract room class
+// defines all shared room attributes and functions
 public abstract class Room {
 
 	private ArrayList<Item> items; 
 	
+	// for room initialization
 	public void setItems(ArrayList<Item> items) {
 		this.items = items; 
 	}
 	
+	// room description
 	public abstract void describe(); 
 	
+	// does item exist in room?
 	public int exists(String itemName) {
 		for(int i = 0; i < this.items.size(); i ++) {
 			if(this.items.get(i).getName().toUpperCase().equals(itemName)) {
@@ -25,6 +30,7 @@ public abstract class Room {
 		return -1; 
 	}
 	
+	// what happens if item is taken
 	public boolean take(String itemName, Player player) {
 		int index = this.exists(itemName);
 		if(index != -1) {
@@ -38,6 +44,8 @@ public abstract class Room {
 		
 	}
 	
+	// what happens if item is used
+	// defined for room if some items are dependent on environment (not implemented)
 	public void use(String itemName, Player player) {
 		Inventory inv = player.getInventory(); 
 		

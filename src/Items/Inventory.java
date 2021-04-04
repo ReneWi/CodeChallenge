@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import Interface.Item;
 
 public class Inventory extends ArrayList<Item> {
-
+	
+	// information for player
 	public void show() {
 		if(this.size() == 0) {
 			System.out.println("Dein Inventar ist leer.");

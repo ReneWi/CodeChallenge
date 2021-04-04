@@ -22,7 +22,7 @@ public class Game {
 	}
 	
 	
-	
+	//Game introduction
 	public void intro() {
 		
 		System.out.println("Willkommen bei meiner Lösung der Code-Challange!");
@@ -34,6 +34,7 @@ public class Game {
 		
 	}
 	
+	//Character creation
 	public void create() {
 		System.out.println("");
 		int input = -1; 
@@ -54,7 +55,7 @@ public class Game {
 		
 		System.out.println("Dein Name ist " + name + " und du bist topfit! Oder so...");
 		
-
+		//Choose player class for alternative endings
 		System.out.println("(Wähle eine Klasse: [Sportlich|Nerdig|Sozial])");
 		input = cp.parseOpt(sc.nextLine(), new String[] {"SPORTLICH", "NERDIG","SOZIAL"});
 		
@@ -72,7 +73,7 @@ public class Game {
 			break; 
 			
 		case 1: 
-			System.out.println("'Ich bin der Allerschlauste. Die Gespräche werden ein Klacks!', denkst du dir während du dich so betrachtest.");
+			System.out.println("'Mit meinem Allgemein- und Fachwissen bin ich gut gerüstet. Die Gespräche werden ein Klacks!', denkst du dir während du dich so betrachtest.");
 			player = new Nerd(); 
 			break;
 			
@@ -92,12 +93,14 @@ public class Game {
 		
 	}
 	
+	//Start room home
 	public void atHome() {
 		System.out.println("");
 		System.out.println("(Du stehst in deiner Einzimmerwohnung. Was tust du?)");
 		cp.parseCmds(this.roomHome, this.player); 	
 	}
 	
+	//Start gold part of story 
 	public void atGold() {
 		System.out.println("");
 		if(this.player.getDressed() && this.player.getCombed()) {
@@ -113,10 +116,9 @@ public class Game {
 		System.out.println("Etwas verwundert musst du feststellen, dass es sich um ein Café handelt.");
 		System.out.println("Doch als du dich etwas verwirrt umguckst siehst du, wie ein junger, hipper Typ dich von drinnen zu sich winkt.");
 		System.out.println("(Reingehen? [j|n])");
-		int yesno = cp.parseOpt(sc.nextLine(), new String[] {"N", "J"}); 
-		
 		System.out.println("");
-		if( yesno == 0) {
+		
+		if( cp.parseOpt(sc.nextLine(), new String[] {"N", "J"})  == 0) {
 			System.out.println("Das ist dir nicht geheuer. Du spazierst am Café vorbei als hättest du nie vorgehabt hinein zu gehen");
 			System.out.println("und setzt dich bis zum nächsten Gespräch in einen Park");
 		}else{
@@ -129,23 +131,23 @@ public class Game {
 			System.out.println("Plötzlich und ohne dass du irgendwas gesagt hättest, liegt ein Vertrag vor dir. 'Du hast mich überzeugt!', sagt Gideon.");
 			System.out.println("'Wenn du unterschreibst, kannt du gleich morgen anfangen.', sagt er lächelnd.");
 			System.out.println("(Vertrag unterschreiben? [j|n])");
-			yesno = cp.parseOpt(sc.nextLine(), new String[] {"N", "J"});
 			System.out.println("");
 			
-			if( yesno == 0) {
+			if( cp.parseOpt(sc.nextLine(), new String[] {"N", "J"}) == 0) {
 				System.out.println("Du sagst du möchtest nochmal drüber nachdenken und verlässt möglichst bald das Café.");
 				System.out.println("Gideon versucht dich zwar zu überreden zu unterschreiben, aber das hinterlässt ein noch mulmigeres Gefühl, als du sowieso schon hast.");
 			}else {
+				//bad ending
 				System.out.println("'Klar bin ich dabei!', rufst du und unterschreibst entzückt.");
 				System.out.println("Leider bist du damit auf ein Pyramidensystem reingefallen und verlierst nach und nach alle deine Freunde. Schade " + player.getName() + "!");
 				gameOver();
-				System.exit(0);
 			}
 		};
 		
 	
 	}
 	
+	//Start bar part of story
 	public void atBar() {
 		
 		System.out.println("");
@@ -156,8 +158,10 @@ public class Game {
 		System.out.println("Er stellt sich als Moe vor und ist offenbar der Chef des Pubs.");
 		System.out.println("Er sagt dir, dass dein Können eigentlich egal ist und jeder Barkeeper werden kann.");
 		System.out.println("Das einzige was wichtig sei, ist ein gut trainierter Körper und eine soziale Ader.\n");
+		
 		System.out.println("");
 		
+		//bad ending
 		if(!player.getDressed()) {
 			System.out.println("Plötzlich mustert dich Moe von oben bis unten.");
 			System.out.println("'Gibt es einen Grund warum du nur ein T-Shirt und Unterwäsche trägst?'");
@@ -165,24 +169,25 @@ public class Game {
 			System.out.println("Du hast vergessen dich anzuziehen!!");
 			System.out.println("Du läufst nach Hause, ziehst dir die Decke über den Kopf und verlässt die Wohnung eine Woche nicht.");
 			gameOver();
-			System.exit(0);
 		}
 		
+		System.out.println("'Lass dich mal ansehen', sagt Moe.");
 		if(player.getStrength() >= 10 && player.getCharisma() >= 10) {
-			System.out.println("Er mustert dich kurz und bescheinigt dir beide Eigenschaften. Du kannst nächstes Wochenende anfangen, wenn du willst!");
+			System.out.println("Er mustert dich kurz. 'Du scheinst mir als könntest du gut mit Menschen. Und athletisch bist du auch. Du kannst nächstes Wochenende anfangen, wenn du willst!'");
 			System.out.println("(Den Job annehmen und nach Hause gehen? [j|n])");
-			int yesno = cp.parseOpt(sc.nextLine(), new String[] {"N", "J"}); 
-			if( yesno == 0) {
+			
+			if( cp.parseOpt(sc.nextLine(), new String[] {"N", "J"}) == 0) {
 				System.out.println("Du sagst es hört sich verlockend an, aber du wirst eine Nacht drüber schlafen und dich morgen melden.");
 				System.out.println("'Kein Problem.', sagt Moe.");
 			}else {
+				
+				// bad ending
 				System.out.println("'Klar bin ich dabei!', rufst du.");
 				System.out.println("Nachdem ihr die Formalia geklärt habt, gibt dir Moe noch ein Bier aus und du gehst gut gelaunt nach Hause.");
 				System.out.println("Von nun an arbeitest du als Barkeeper und schlägst dir mit dem Job die Nächte um die Ohren.");
 				System.out.println("Dabei vernachlässigst du dein Studium bis du irgendwann exmatrikuliert wirst.");
 				System.out.println("Aber hey: Jetzt weißt du wie man Cocktails mixt!");
 				gameOver();
-				System.exit(0);
 			}
 			
 		}else if(player.getStrength() >= 10) {
@@ -192,28 +197,34 @@ public class Game {
 			System.out.println("'Deine Ausstrahlung ist Top, aber du müsstest mal an deinem Körper arbeiten. Komm wieder, wenn du pumpen warst!', sagt er.");
 		}else {
 			System.out.println("'Ai, ai, ai. Also du bist ja mal gar nicht für den Job geeignet. Such dir lieber was, wo du nicht mit Menschen zu tun hast.', lacht er.");
+			System.out.println("'Sorry, aber mit Nerds können wir in der Gastro leider nichts anfangen. Mach dir nichts draus!'");
 		}
 		
 		System.out.println("");
 		System.out.println("'Wenn du willst kannst du hier noch ein Bier trinken, wenn du schonmal her gekommen bist.', sagt Moe und zapft dir auch prombt eins.");
 		System.out.println("Du hast noch etwas Zeit bis zum letzten Gespräch. Was tust du?");
+		
+		//Start room bar
 		cp.parseCmds(this.roomBar, this.player); 	
 	}
 	
+	//Start yolawo part of story 
 	public void atYolawo() {
 		System.out.println("");
 		System.out.println("Du hast die Zeit erfolgreich totgeschlagen und kommst pünktlich bei deinem letzten Gespräch an: Die kleine Softwareschmiede Yolawo.");
 		System.out.println("Du sollst noch ein paar Minuten im Empfangsbereich warten und dann geht's auch schon los.");
 		System.out.println("");
+		
+		//bad ending
 		if(player.getPoisoned()) {
 			System.out.println("Während du da so sitzt, bekommst du plötzlich starke Magenkrämpfe und dir wird ganz schwummerig.");
 			System.out.println("Es wird so schlimm, dass du dich entschuldigen musst und dich mit letzten Kräften nach Hause schleppst.");
 			System.out.println("Du liegst ein paar Tage flach und der Job wird dir weggeschnappt. Blöd gelaufen.");
 			System.out.println("Hättest du mal nicht die Pizza gegessen.");
 			gameOver();
-			System.exit(0);
 		}
 		
+		//bad ending
 		if(!player.getCombed()) {
 			System.out.println("Während du da so sitzt, entdeckst du dein Spiegelbild in einem Fenster.");
 			System.out.println("Du hast dir gar nicht die Haare gekämmt! Oh nein, das kann ja nichts werden!"); 
@@ -222,9 +233,9 @@ public class Game {
 			System.out.println("Die Jungs von Yolawo wissen so nicht viel mit dir anzufangen und sagen dir ab.");
 			System.out.println("Vielleicht bringt die nächste Woche ja einen neuen Job.");
 			gameOver();
-			System.exit(0);
 		}
 		
+		//bad ending
 		if(player.getDrunk()) {
 			System.out.println("Nach einer kurzen Wartezeit wirst du zum Gespräch reingebeten.");
 			System.out.println("Doch schon beim Händeschütteln wirst du eigenartig gemustert.");
@@ -234,7 +245,6 @@ public class Game {
 			System.out.println("Du versuchst deinen Biergeruch zu entschuldigen, aber das macht alles nur noch schlimmer.");
 			System.out.println("Hättest du doch nur abgelehnt!");
 			gameOver();
-			System.exit(0);
 		}
 		
 		System.out.println("Nach einer kurzen Wartezeit wirst du zum Gespräch reingebeten.");
@@ -248,17 +258,21 @@ public class Game {
 		System.out.println("Als du zu Hause bist, setzt du dich gleich dran und programmierst bis tief in die Nacht hinein.");
 		System.out.println("Den Ausgang der Geschichte lässt du offen und die Spieler können ihn selbst entscheiden.");
 		System.out.println("Als du fertig bist, sendest du ihnen den Code und hoffst auf das Beste...");
-		
+
+		// good ending
 		win(); 
 		
 	}
 	
+	// Game over text
 	public void gameOver() {
 		System.out.println("");
 		System.out.println("Game Over");
 		System.out.println("Vielen Dank für's spielen, vielleicht schaffst du's ja nächstes Mal!");
+		System.exit(0);
 	}
 	
+	// Game won text
 	public void win() {
 		System.out.println("");
 		System.out.println("Gewonnen!");

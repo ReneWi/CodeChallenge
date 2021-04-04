@@ -3,6 +3,10 @@ package Abstract;
 import Interface.Item;
 import Items.Inventory;
 
+
+// abstract player class
+// defines all shared player attributes and functions
+
 public abstract class Player {
 	private int health;
 	private int charisma;
