@@ -24,7 +24,7 @@ public class Comb implements Item {
 	public boolean use(Inventory i, Player p) {
 		System.out.println("Du k‰mmst dir erfolgreich die Haare.");
 		System.out.println("Leider brechen dabei die restlichen Zacken des Kamms ab.");
-		System.out.println("'Der hat es hinter sich', denkst du, als du ihn wegschmeiﬂt");
+		System.out.println("'Der hat es hinter sich.', denkst du, als du ihn wegschmeiﬂt");
 		p.isCombed();
 		i.remove(this); 
 		return true;

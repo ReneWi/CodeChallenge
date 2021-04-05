@@ -24,7 +24,7 @@ public class Bar extends Room {
 		if(this.exists("BIER") != -1) {
 			System.out.println("Vor dir steht dein frisch gezapftes BIER.");
 		}
-		if(this.exists("NÜSSE") != -1) {
+		if(this.exists("NUESSE") != -1) {
 			System.out.println("Außerdem entdeckst du eine Schüssel NUESSE auf der Theke."); 
 		}
 	}

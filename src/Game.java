@@ -129,7 +129,7 @@ public class Game {
 			System.out.println("Aber das hat dir dein Freund eigentlich schon alles erklärt. Du schweifst also zwischendurch gedanklich etwas ab.");
 			System.out.println("Es wird noch irgendwas Neues über Ägypten und Aufstiegsmöglichkeiten erzählt, aber du schaust dir lieber die schöne Innenausstattung des Cafés an.");
 			System.out.println("Plötzlich und ohne dass du irgendwas gesagt hättest, liegt ein Vertrag vor dir. 'Du hast mich überzeugt!', sagt Gideon.");
-			System.out.println("'Wenn du unterschreibst, kannt du gleich morgen anfangen.', sagt er lächelnd.");
+			System.out.println("'Wenn du unterschreibst, kannst du gleich morgen anfangen.', sagt er lächelnd.");
 			System.out.println("(Vertrag unterschreiben? [j|n])");
 			System.out.println("");
 			
@@ -157,7 +157,7 @@ public class Game {
 		System.out.println("Nach einer Weile setzt sich ein kleiner, durchtrainierter Mann mittleren Alters zu dir.");
 		System.out.println("Er stellt sich als Moe vor und ist offenbar der Chef des Pubs.");
 		System.out.println("Er sagt dir, dass dein Können eigentlich egal ist und jeder Barkeeper werden kann.");
-		System.out.println("Das einzige was wichtig sei, ist ein gut trainierter Körper und eine soziale Ader.\n");
+		System.out.println("Das Einzige, was wichtig sei, ist ein gut trainierter Körper und eine soziale Ader.");
 		
 		System.out.println("");
 		
@@ -254,7 +254,7 @@ public class Game {
 		System.out.println("Zuletzt bitten sie dich eine Code-Challenge für sie zu machen und einzureichen.");
 		System.out.println("Du sollst eine Java-Anwendung schreiben, welche Interfaces und Abstrakte Klassen nutzt.");
 		System.out.println("Auf dem nach Hause Weg grübelst du lange, welche Anwendung du schreiben könntest.");
-		System.out.println("Nach ein paar unkreativen Einfällen entscheidest du dich ein kleines Textadventure zu schreiben.");
+		System.out.println("Nach ein paar unkreativen Einfällen entscheidest du dich ein kleines Text-Adventure zu schreiben.");
 		System.out.println("Als du zu Hause bist, setzt du dich gleich dran und programmierst bis tief in die Nacht hinein.");
 		System.out.println("Den Ausgang der Geschichte lässt du offen und die Spieler können ihn selbst entscheiden.");
 		System.out.println("Als du fertig bist, sendest du ihnen den Code und hoffst auf das Beste...");
@@ -268,7 +268,7 @@ public class Game {
 	public void gameOver() {
 		System.out.println("");
 		System.out.println("Game Over");
-		System.out.println("Vielen Dank für's spielen, vielleicht schaffst du's ja nächstes Mal!");
+		System.out.println("Vielen Dank für's Spielen, vielleicht schaffst du's ja nächstes Mal!");
 		System.exit(0);
 	}
 	
@@ -276,7 +276,7 @@ public class Game {
 	public void win() {
 		System.out.println("");
 		System.out.println("Gewonnen!");
-		System.out.println("Vielen Dank für's spielen. Ich hoffe es hat Spaß gemacht :)");
+		System.out.println("Vielen Dank für's Spielen. Ich hoffe es hat Spaß gemacht :)");
 	}
 
 }
