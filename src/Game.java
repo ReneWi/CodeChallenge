@@ -30,6 +30,7 @@ public class Game {
 		System.out.println("Über den Befehl 'Hilfe' können grundlegende Aktionen nachgeschaut werden.");
 		System.out.println("Über den Befehl 'Ende' kann das Spiel jederzeit beendet werden.");
 		System.out.println("Und nun viel Spaß! :)");
+		System.out.println("");
 		System.out.println("(Drücke Enter, um zu beginnen)");
 		
 	}
